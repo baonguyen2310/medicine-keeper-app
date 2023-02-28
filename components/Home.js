@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import Checkbox from "expo-checkbox";
 import { Audio } from "expo-av";
+import { LinearGradient } from "expo-linear-gradient";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import { Ionicons } from "@expo/vector-icons";
@@ -73,7 +74,7 @@ async function registerForPushNotificationsAsync() {
 
 let accessToken;
 
-const Home = ({ navigation }) => {
+const Home = ({ route, navigation }) => {
   const [alarm1, setAlarm1] = useState(new Date());
   const [alarm2, setAlarm2] = useState(new Date());
   const [alarm3, setAlarm3] = useState(new Date());
@@ -345,7 +346,7 @@ const Home = ({ navigation }) => {
   return (
     <View
       style={{
-        backgroundColor: "#ddd",
+        backgroundColor: route.params.color,
         height: "100%",
       }}
     >
@@ -355,14 +356,39 @@ const Home = ({ navigation }) => {
           fontSize: 24,
           textAlign: "center",
           fontWeight: "bold",
-          color: "#fff",
-          backgroundColor: "#F0A04B",
+          color: route.params.color,
+          backgroundColor: "#fff",
           padding: 24,
           marginBottom: 5,
         }}
       >
         HỘP THUỐC HẸN GIỜ
       </Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.setParams({ day: "Mỗi ngày", color: "#F0A04B" });
+        }}
+      >
+        <View
+          style={{
+            marginTop: 20,
+            marginBottom: 20,
+            marginRight: 20,
+            backgroundColor: "#000",
+            padding: 6
+          }}
+        >
+          {route.params == undefined ? (
+            <Text style={{ fontSize: 24, fontStyle: "italic", color: "white" }}>
+              Mỗi ngày
+            </Text>
+          ) : (
+            <Text style={{ fontSize: 24, fontStyle: "italic", color: "white" }}>
+              {route.params.day}
+            </Text>
+          )}
+        </View>
+      </TouchableOpacity>
       {/* Morning */}
       <View
         style={{
@@ -415,7 +441,11 @@ const Home = ({ navigation }) => {
               alignItems: "center",
             }}
           >
-            <Text style={{paddingBottom: 5, color:"#999", fontWeight:"bold"}}>Đã uống:</Text>
+            <Text
+              style={{ paddingBottom: 5, color: "#999", fontWeight: "bold" }}
+            >
+              Đã uống:
+            </Text>
             <Checkbox
               value={isTook1}
               disabled
@@ -487,7 +517,11 @@ const Home = ({ navigation }) => {
               alignItems: "center",
             }}
           >
-            <Text style={{paddingBottom: 5, color:"#999", fontWeight:"bold"}}>Đã uống:</Text>
+            <Text
+              style={{ paddingBottom: 5, color: "#999", fontWeight: "bold" }}
+            >
+              Đã uống:
+            </Text>
             <Checkbox
               value={isTook2}
               disabled
@@ -559,7 +593,11 @@ const Home = ({ navigation }) => {
               alignItems: "center",
             }}
           >
-            <Text style={{paddingBottom: 5, color:"#999", fontWeight:"bold"}}>Đã uống:</Text>
+            <Text
+              style={{ paddingBottom: 5, color: "#999", fontWeight: "bold" }}
+            >
+              Đã uống:
+            </Text>
             <Checkbox
               value={isTook3}
               disabled

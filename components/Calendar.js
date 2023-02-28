@@ -10,16 +10,16 @@ const days = [
   "Chủ nhật",
 ];
 const colors = [
-    "#4D455D",
-    "#E96479",
-    "#181D31",
-    "#7DB9B6",
-    "#F0A04B",
-    "#183A1D",
-    "#B08BBB"
-]
+  "#5e5473",
+  "#E96479",
+  "#5dd1e3",
+  "#7DB9B6",
+  "#eda65a",
+  "#85c78f",
+  "#B08BBB",
+];
 
-const Calendar = () => {
+const Calendar = ({ navigation }) => {
   return (
     <View
       style={{
@@ -32,27 +32,28 @@ const Calendar = () => {
     >
       {days.map((day, index) => {
         return (
-          <View
-            key={index}
-            style={{
-              width: 100,
-              height: 100,
-              backgroundColor: colors[index],
-              margin: 10,
-              justifyContent: "center"
-            }}
-          >
-            <TouchableOpacity>
-              <Text style={{
-                textAlign: "center",
-                fontSize: 24,
-                color: "white",
+          <TouchableOpacity key={index} onPress={ () => { navigation.navigate("Home", {day: day, color: colors[index]}) } }>
+            <View
+              style={{
+                width: 100,
+                height: 100,
+                backgroundColor: colors[index],
+                margin: 10,
+                justifyContent: "center",
+                borderRadius: 5,
               }}
+            >
+              <Text
+                style={{
+                  textAlign: "center",
+                  fontSize: 24,
+                  color: "white",
+                }}
               >
                 {day}
-            </Text>
-            </TouchableOpacity>
-          </View>
+              </Text>
+            </View>
+          </TouchableOpacity>
         );
       })}
     </View>

@@ -59,7 +59,7 @@ export default function App() {
           headerShown: false
         })}
       >
-        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Home" component={Home} initialParams={{day: "Mỗi ngày", color: "#F0A04B"}} />
         <Tab.Screen name="Hẹn theo thứ" component={Calendar} />
         <Tab.Screen name="Đơn thuốc" component={Medicine} />
         <Tab.Screen name="User" component={UserStackScreen} />
