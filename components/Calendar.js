@@ -8,6 +8,7 @@ const days = [
   "Thứ sáu",
   "Thứ bảy",
   "Chủ nhật",
+  "Mỗi ngày"
 ];
 const colors = [
   "#5e5473",
@@ -17,6 +18,7 @@ const colors = [
   "#eda65a",
   "#85c78f",
   "#B08BBB",
+  "#F0A04B"
 ];
 
 const Calendar = ({ navigation }) => {

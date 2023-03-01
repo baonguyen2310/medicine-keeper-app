@@ -364,31 +364,32 @@ const Home = ({ route, navigation }) => {
       >
         HỘP THUỐC HẸN GIỜ
       </Text>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.setParams({ day: "Mỗi ngày", color: "#F0A04B" });
+      <View
+        style={{
+          marginTop: 20,
+          marginBottom: 20,
+          marginRight: 20,
+          backgroundColor: "#000",
+          padding: 6,
+          flexDirection: "row",
+          justifyContent: "space-between",
         }}
       >
-        <View
-          style={{
-            marginTop: 20,
-            marginBottom: 20,
-            marginRight: 20,
-            backgroundColor: "#000",
-            padding: 6
-          }}
-        >
-          {route.params == undefined ? (
-            <Text style={{ fontSize: 24, fontStyle: "italic", color: "white" }}>
-              Mỗi ngày
-            </Text>
-          ) : (
-            <Text style={{ fontSize: 24, fontStyle: "italic", color: "white" }}>
-              {route.params.day}
-            </Text>
-          )}
+        {route.params == undefined ? (
+          <Text style={{ fontSize: 24, fontStyle: "italic", color: "white" }}>
+            Mỗi ngày
+          </Text>
+        ) : (
+          <Text style={{ fontSize: 24, fontStyle: "italic", color: "white" }}>
+            {route.params.day}
+          </Text>
+        )}
+        <View style={{ alignSelf: "flex-end" }}>
+          <TouchableOpacity onPress={handleRefresh}>
+            <Ionicons name="refresh" size={35} color="white" />
+          </TouchableOpacity>
         </View>
-      </TouchableOpacity>
+      </View>
       {/* Morning */}
       <View
         style={{
@@ -616,11 +617,6 @@ const Home = ({ route, navigation }) => {
             }}
           />
         </View>
-      </View>
-      <View style={{ position: "absolute", top: "95%", alignSelf: "flex-end" }}>
-        <TouchableOpacity onPress={handleRefresh}>
-          <Ionicons name="refresh" size={35} color="black" />
-        </TouchableOpacity>
       </View>
     </View>
   );
